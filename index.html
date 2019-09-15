@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="158702-interface-icon-collection/font/flaticon.css" />
+  <link rel="stylesheet" href="output.css" />
+  <link rel="stylesheet" href="assets\helvetica-neue-5-cufonfonts-webfont\style.css">
+  <style>
+    * {
+      transition: 200ms;
+      font-family: Helvetica;
+    }
+
+    .btn:focus {
+      outline: none;
+    }
+
+    [class^="flaticon-"]:before,
+    [class*=" flaticon-"]:before,
+    [class^="flaticon-"]:after,
+    [class*=" flaticon-"]:after {
+      margin-left: 0;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    ::-webkit-scrollbar {
+      background-color: rgba(0, 0, 0, 0.116);
+      width: 4px;
+      border-radius: 0 3px 3px 0;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #a0aec0;
+      border-radius: 0 3px 3px 0;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #38b2ac;
+    }
+
+    #show-table-1,
+    #show-table-2 {
+      transform: rotate(-90deg);
+      transition: 500ms;
+    }
+
+    .down {
+      transform: rotate(90deg);
+    }
+
+    #tabel-modal-tetap tr:nth-child(odd),
+    #tabel-modal-kerja tr:nth-child(odd) {
+      background-color: #f7fafc;
+      ;
+    }
+
+    #tabel-modal-tetap tr input:hover {
+      cursor: default;
+    }
+
+    #biaya-penyusutan td {
+      padding-left: 20px;
+    }
+  </style>
+  <title>BEP & RAB Kalkulator v1.2</title>
+</head>
+
+<body class="max-h-screen bg-white">
+  <div id="top-bar" class="w-full md:h-10 border-b bg-white flex flex-row z-20 fixed top-0 z-10">
+    <button class="px-5 border-b-4 border-blue-600 focus:outline-none text-blue-700 z-10" id="tab">
+      <span class="flaticon-bar-chart inline-block"></span>
+      <span class="font-semibold">BEP</span>
+    </button>
+    <button
+      class="hover:bg-gray-100 hover:border-gray-100 px-5 border-b-4 border-white focus:outline-none text-gray-700 z-10"
+      id="tab">
+      <span class="flaticon-shopping-bag inline-block"></span>
+      <span class="font-semibold">RAB</span>
+    </button>
+    <button
+      class="hover:bg-gray-100 hover:border-gray-100 px-5 border-b-4 border-white focus:outline-none text-gray-700 z-10"
+      id="tab">
+      <span class="flaticon-user inline-block"></span>
+      <span class="font-semibold">About</span>
+    </button>
+    <h1 class="md:w-full ml-2 md:ml-0 md:fixed md:text-center leading-loose mt-1 z-0 text-blue-900 text-lg">
+      BEP & RAB Kalkulator
+    </h1>
+    <!-- <input id="minimize" class="btn right-0 p-4 w-12 h-10 hover:bg-blue-300 fixed mr-12" type="image" src="assets\icons\down.svg">
+    <input id="maximize" class="btn fixed p-4 w-12 h-10 hover:bg-blue-300 right-0" type="image" src="assets\icons\up.svg"> -->
+  </div>
+  <div id="tab-content" class="w-full h-screen flex flex-col sm:flex-row">
+    <div id="tahap-penjualan"
+      class="sm:w-64 flex-grow sm:flex-grow-0 mt-16 mb-6 sm:border-r border-gray-400 mr-3 flex flex-col">
+      <div id="list-title">
+        <p class="font-thin text-xl p-2 mx-2 text-blue-600 border-b border-gray-400">
+          <i class="flaticon-box mr-2"></i>
+          Tahap Penjualan
+        </p>
+      </div>
+      <div class="sm:max-h-full max-h-screen overflow-y-auto">
+        <ul id="phase" class="pr-1">
+        </ul>
+      </div>
+      <button id="add-phase"
+        class="btn hover:shadow-md block bg-blue-600 w-56 text-lg rounded sm:mx-3 mx-auto my-4 hover:bg-blue-500 text-gray-100">
+        <!-- <p class="text-2xl flaticon-plus"></p> -->
+        <p class="p-2">Tambah Tahap Penjualan</p>
+      </button>
+    </div>
+    <div id="main" class="sm:mt-16 flex-grow pb-5 p-3 pt-0 flex-col flex min-h-0 sm:overflow-auto">
+      <div id="bep" class=" flex flex-col sm:flex-row mb-5 py-2 border-b border-gray-400 flex-wrap justify-center">
+        <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded-lg flex flex-col m-1">
+          <label class="text-pink-500 ">Fixed Cost</label>
+          <input value=0 id="fixed-cost" placeholder="Fixed Cost" type="number"
+            class="btn border-b-2 text-gray-500 focus:text-gray-900 focus:border-pink-500 pl-2 bg-transparent flex-grow">
+        </div>
+        <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded-lg flex flex-col m-1">
+          <label class="text-orange-500 ">Variable Cost</label>
+          <input value=0 id="variable-cost" placeholder="Variable Cost" type="number"
+            class="btn border-b-2 text-gray-500 focus:text-gray-900 focus:border-orange-500 pl-2 bg-transparent flex-grow">
+        </div>
+        <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded-lg flex flex-col m-1">
+          <label class="text-teal-500 ">Product Price</label>
+          <input value=0 id="product-price" placeholder="Product Price" type="number"
+            class="btn border-b-2 text-gray-500 focus:text-gray-900 focus:border-teal-500 pl-2 bg-transparent flex-grow">
+        </div>
+        <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded-lg flex flex-col m-1">
+          <label class="text-blue-500 ">Production Capacity</label>
+          <input value=0 id="production-capacity" placeholder="Production Capacity" type="number"
+            class="btn border-b-2 text-gray-500 focus:text-gray-900 focus:border-blue-500 pl-2 bg-transparent flex-grow">
+        </div>
+        <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded flex flex-col m-1">
+          <label class="text-gray-700">Break Event Point (unit)</label>
+          <input readonly id="bep-unit" value=0 placeholder="Production Capacity" type="number"
+            class="btn text-gray-700 pl-2 flex-grow text-lg">
+        </div>
+        <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded flex flex-col m-1">
+          <label class="text-gray-700">Break Event Point (nominal)</label>
+          <input readonly id="bep-nominal" value=0 placeholder="Production Capacity" type="number"
+            class="btn text-gray-700 pl-2 flex-grow text-lg">
+        </div>
+      </div>
+      <div id="chart-wrapper" class="flex-grow sm:overflow-auto">
+        <div id="chart" class="max-w-full h-full relative">
+          <canvas id="myChart" class=""></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="tab-content" class="flex flex-col hidden overflow-auto max-h-screen">
+    <div id="modal-tetap" class="mb-4 mt-16 m-2">
+      <div class="border-b text-xl text-gray-100 p-2">
+        <p class="inline-block text-teal-500"><i class="flaticon-box mr-2"></i>
+          Modal Tetap</p>
+        <!-- <button id="show-table-1"><i class="flaticon-next-1 text-teal-500"></i></button> -->
+      </div>
+      <table class="w-full table-fixed">
+        <tr class="text-teal-500">
+          <th class="font-normal">No</th>
+          <th class="font-normal" colspan="4">Nama Barang</th>
+          <th class="font-normal" colspan="3">Harga</th>
+          <th class="font-normal" colspan="3">Frekuensi</th>
+          <th class="font-normal" colspan="3">Total</th>
+          <th></th>
+        </tr>
+        <tbody id="tabel-modal-tetap">
+        </tbody>
+      </table>
+      <div class="flex w-full justify-between border-t border-gray-400 text-gray-100 p-2">
+        <button id="tambah-barang-tetap"
+          class="hover:shadow-lg hover:bg-teal-500 rounded btn bg-teal-600 p-2 px-5 text-lg">Tambah Barang Baru</button>
+        <span id="total-tetap" class="text-teal-600 mx-5 text-lg leading-loose"></span>
+      </div>
+    </div>
+    <div id="modal-kerja" class="m-2 my-4">
+      <div class="text-xl text-pink-500 p-2 border-b">
+        <p class="inline-block"><i class="flaticon-box mr-2"></i> Modal Kerja</p>
+        <!-- <input id="show-table-2" class="inline-block w-6 m-1 mx-2 btn float-right" type="image"
+          src="assets\icons\up.svg"> -->
+      </div>
+      <table class="w-full table-fixed">
+        <tr class="text-pink-500">
+          <th class="font-normal">No</th>
+          <th class="font-normal" colspan="4">Nama Barang</th>
+          <th class="font-normal" colspan="3">Harga</th>
+          <th class="font-normal" colspan="3">Frekuensi</th>
+          <th class="font-normal" colspan="3">Total</th>
+          <th></th>
+        </tr>
+        <tbody id="tabel-modal-kerja">
+        </tbody>
+      </table>
+      <div class="flex w-full justify-between border-t border-gray-400 text-gray-100 p-2">
+        <button id="tambah-barang-kerja"
+          class="btn hover:bg-pink-400 hover:shadow-lg bg-pink-500 px-5 text-lg p-2 rounded">Tambah Barang Baru</button>
+        <span id="total-kerja" class="mx-5 text-pink-500 text-lg leading-loose"></span>
+      </div>
+    </div>
+    <div id="biaya-penyusutan" class="my-4 mx-2 text-xl">
+      <p class="text-blue-600 p-2 border-b"><i class="flaticon-box mr-2"></i> Biaya Penyusutan</p>
+      <table class="w-full text-blue-700 table-fixed text-lg">
+        <tr class="bg-blue-100">
+          <td class="border-r-2 border-blue-200">Modal Tetap:</td>
+          <td class="">Rp. <span id="modal-penyusutan">0</span>,00</td>
+        </tr>
+        <tr class="">
+          <td class="border-r-2 border-blue-200">Presentase Penyusutan: </td>
+          <td class=""><input id="persentase-penyusutan" type="number" value=10
+              class="cursor-default text-right pr-2 mr-2 font-semibold w-20 btn bg-transparent hover:bg-blue-100 focus:text-blue-900 focus:bg-gray-100">%
+          </td>
+        </tr>
+        <tr class="bg-blue-100">
+          <td class="border-r-2 border-blue-200">Biaya Penyusutan: </td>
+          <td class="">Rp. <span id="penyusutan">0</span>,00</td>
+        </tr>
+        <tr class="">
+          <td class="border-r-2 border-blue-200">Biaya Penyusutan Setahun: </td>
+          <td class="">Rp. <span id="penyusutan-tahun">0</span>,00 / Hari</td>
+        </tr>
+      </table>
+    </div>
+    <div id="biaya-total" class="my-4 mx-2">
+      <p class="w-full text-orange-500 text-xl border-b p-2"><i class="flaticon-shopping-bag mr-2"></i> Biaya
+        Keseluruhan</p>
+      <table class="table-fixed text-lg w-full text-orange-500">
+        <tr>
+          <td class="pl-5">Penyusutan Selama 1 Tahun</td>
+          <td>Rp <span id="penyusutan-keseluruhan">0</span>,00</td>
+        </tr>
+        <tr>
+          <td class="pl-5">Modal Kerja</td>
+          <td>Rp <span id="kerja-keseluruhan">0</span>,00</td>
+        </tr>
+        <tr class="border-t-2 border-orange-500">
+          <td class="pl-5">Jumlah</td>
+          <td>Rp <span id="biaya-keseluruhan">0</span>,00</td>
+        </tr>
+      </table>
+    </div>
+    <div id="perencanaan-penjualan" class="my-4 mx-2">
+      <p class="w-full text-xl text-purple-600 p-2 border-b"><i class="flaticon-shopping-bag mr-2"></i> Perencanaan
+        Penjualan <button id="project" class="float-right border border-purple-500 rounded hover:bg-purple-500 hover:text-white px-1 text-base btn">Proyeksikan Grafik BEP <i class="flaticon-bar-chart"></i></button> </p>
+      <div class="flex flex-grow flex-wrap">
+        <div class="flex-grow flex-col p-2 border-b">
+          <p class="text-purple-700 text-lg">Harga Produk</p>
+          <input id="harga-produk" type="text" readonly placeholder="Harga Produk"
+            class="w-full text-purple-500 btn px-2">
+        </div>
+        <div class="flex-grow flex-col p-2 border-b">
+          <p class="text-purple-700 text-lg">Jumlah Produk</p>
+          <input id="jumlah-produk" value=1 type="number"
+            class="w-full hover:border-purple-300 border-b-2 bg-white btn focus:border-purple-500 px-2">
+        </div>
+        <div class="flex-grow flex-col p-2 border-b">
+          <p class="text-purple-700 text-lg">Laba</p>
+          <input id="laba" value=1 type="number"
+            class="w-full hover:border-purple-300 border-b-2 bg-white btn focus:border-purple-500 px-2">
+          <p class="relative float-right text-purple-500 -ml-5">%</p>
+        </div>
+        <div class="flex-grow flex-col p-2 border-b">
+          <p class="text-purple-700 text-lg">Harga Jual Pokok</p>
+          <input id="harga-jual-pokok" type="text" readonly value="Harga Jual Pokok"
+            class="w-full text-purple-500 btn px-2">
+        </div>
+        <div class="flex-grow flex-col p-2 border-b">
+          <p class="text-purple-700 text-lg">Pembulatan</p>
+          <input id="pembulatan-harga" type="text" readonly value="Pembulatan" class="w-full text-purple-500 btn px-2">
+        </div>
+      </div>
+    </div>
+    <div id="laba" class="mx-2 my-4">
+      <p class="text-indigo-500 w-full p-2 text-xl"><i class="flaticon-speech-bubble-3 mr-2"></i> Laba</p>
+      <div class="flex">
+        <div id="bruto" class="m-2 flex-grow p-2 rounded-lg shadow-lg border">
+          <p class="text-3xl sm:text-center text-left">Laba Bruto</p>
+          <p class="text-2xl text-indigo-500">Rp <span id="laba-bruto">0</span>,00</p>
+          <table>
+            <tr>
+              <td class="pr-5">Harga Pokok</td>
+              <td>Rp <span id="bruto-pokok">0</span>,00</td>
+            </tr>
+            <tr>
+              <td class="pr-5">Jumlah Produk</td>
+              <td id="jumlah-produk-bruto">0</td>
+            </tr>
+          </table>
+        </div>
+        <div id="netto" class="flex-grow m-2 p-2 rounded-lg shadow-lg border">
+          <p class="text-3xl sm:text-center text-left">Laba Netto</p>
+          <p class="text-2xl text-indigo-500">Rp <span id="laba-netto">0</span>,00</p>
+          <table>
+            <tr>
+              <td class="pr-5">Laba Bruto</td>
+              <td>Rp <span id="bruto-netto">0</span>,00</td>
+            </tr>
+            <tr>
+              <td class="pr-5">Biaya Keseluruhan</td>
+              <td>Rp <span id="netto-seluruh">0</span>,00</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="tab-content" class="w-full pt-16 hidden pb-6 h-screen flex flex-col sm:flex-row">
+    <div class="sm:w-1/2 w-full h-full border-r">
+      <img class="mx-auto w-32 h-32" src="assets\icons\chart.png" alt="">
+      <p class="font-semibold text-3xl text-center mx-10 text-teal-500 border-t">BEP & RAB Kalkulator</p>
+      <p class="text-2xl text-center mx-10 text-blue-600">Avrilian Briliansyah</p>
+      <p class="text-2xl text-center mx-10 text-indigo-600">XII - TKJ</p>
+      <div class="mx-10">
+        <div class="flex-col h-48 shadow-lg rounded-lg p-2 m-2 text-center flex-grow w-32">
+          <img src="assets\Octocat\Octocat.png" alt="">
+          <a href="https://www.github.com/avrilianb" target="_blank" class="text-lg hover:text-purple-500">GitHub Profile</a>
+        </div>
+      </div>
+    </div>
+    <div class="sm:w-1/2 w-full px-10">
+      <p class="text-2xl text-pink-500 border-b text-center w-full"><i class="flaticon-settings"></i> Tools Used</p>
+      <div class="flex flex-wrap">
+        <a href="https://www.tailwindcss.com" target="_blank" class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 hover:text-purple-500 text-center flex-grow w-32">
+          <img class="w-16 mx-auto" src="assets\icons\tailwind.png" alt="">
+          <div class="text-lg pt-5">
+            <p>Tailwind CSS</p>
+          </div>
+        </a>
+        <div class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 text-center flex-grow w-32">
+          <img class="mx-auto h-16 w-16 p-2" src="158702-interface-icon-collection\png-\star.png" alt="">
+          <div class="text pt-1">
+            Font generated by <a href="http://www.flaticon.com" target="_blank" class="hover:text-blue-500">flaticon.com</a>.
+            <p>Under
+              <a href="https://www.creativecommons.org/licenses/by/3.0/" target="_blank" class="hover:text-blue-500">CC</a>:
+              <a data-file="previous-4" href="http://www.flaticon.com/authors/gregor-cresnar" target="_blank" class="hover:text-blue-500">Gregor Cresnar</a>
+            </p>
+          </div>
+        </div>
+        <a href="https://www.electronjs.org" target="_blank" class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 hover:text-purple-500 text-center flex-grow w-32">
+          <img class="mx-auto h-16" src="assets\icons\javascript-electron-logo-s.jpg" alt="">
+          <div>
+            <p class="text-lg mt-5 px-5">Electron JS</p>
+          </div>
+        </a>
+        <a href="https://www.chartjs.org" target="_blank" class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 hover:text-purple-500 text-center flex-grow w-32">
+          <img class="mx-auto h-16" src="assets\icons\chartjs-tutsplus.jpg" alt="">
+          <div>
+            <p class="text-lg px-3 mt-5">Chart.js</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- <div id="tab-content" class="w-full h-screen flex-col sm:flex-row hidden">Options</div> -->
+
+  <script src="node_modules/chart.js/dist/Chart.bundle.js"></script>
+  <!-- <script src="index.js"></script> -->
+  <script src="data.js"></script>
+  <script src="control.js"></script>
+  <script src="table.js"></script>
+  <script src="ui.js"></script>
+</body>
+
+</html>
