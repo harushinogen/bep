@@ -1,0 +1,4 @@
+node_modules
+.vscode
+release-builds
+.atom-live-server.json

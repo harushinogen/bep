@@ -6,102 +6,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="158702-interface-icon-collection/font/flaticon.css" />
-  <link rel="stylesheet" href="output.css" />
-  <link rel="stylesheet" href="assets\helvetica-neue-5-cufonfonts-webfont\style.css">
-  <style>
-    * {
-      transition: 200ms;
-      font-family: Helvetica;
-    }
-
-    .btn:focus {
-      outline: none;
-    }
-
-    [class^="flaticon-"]:before,
-    [class*=" flaticon-"]:before,
-    [class^="flaticon-"]:after,
-    [class*=" flaticon-"]:after {
-      margin-left: 0;
-    }
-
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    ::-webkit-scrollbar {
-      background-color: rgba(0, 0, 0, 0.116);
-      width: 4px;
-      border-radius: 0 3px 3px 0;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: #a0aec0;
-      border-radius: 0 3px 3px 0;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background-color: #38b2ac;
-    }
-
-    #show-table-1,
-    #show-table-2 {
-      transform: rotate(-90deg);
-      transition: 500ms;
-    }
-
-    .down {
-      transform: rotate(90deg);
-    }
-
-    #tabel-modal-tetap tr:nth-child(odd),
-    #tabel-modal-kerja tr:nth-child(odd) {
-      background-color: #f7fafc;
-      ;
-    }
-
-    #tabel-modal-tetap tr input:hover {
-      cursor: default;
-    }
-
-    #biaya-penyusutan td {
-      padding-left: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="css/output.css" />
+  <link rel="stylesheet" href="css/style.css">
   <title>BEP & RAB Kalkulator v1.2</title>
 </head>
 
 <body class="max-h-screen bg-white">
   <div id="top-bar" class="w-full md:h-10 border-b bg-white flex flex-row z-20 fixed top-0 z-10">
-    <button class="px-5 border-b-4 border-blue-600 focus:outline-none text-blue-700 z-10" id="tab">
-      <span class="flaticon-bar-chart inline-block"></span>
-      <span class="font-semibold">BEP</span>
-    </button>
-    <button
-      class="hover:bg-gray-100 hover:border-gray-100 px-5 border-b-4 border-white focus:outline-none text-gray-700 z-10"
-      id="tab">
-      <span class="flaticon-shopping-bag inline-block"></span>
-      <span class="font-semibold">RAB</span>
-    </button>
-    <button
-      class="hover:bg-gray-100 hover:border-gray-100 px-5 border-b-4 border-white focus:outline-none text-gray-700 z-10"
-      id="tab">
-      <span class="flaticon-user inline-block"></span>
-      <span class="font-semibold">About</span>
-    </button>
-    <h1 class="md:w-full ml-2 md:ml-0 md:fixed md:text-center leading-loose mt-1 z-0 text-blue-900 text-lg">
+    <div id="tablist" class="sm:flex-column sm:flex hidden">
+      <button class="px-5 border-b-4 border-blue-600 focus:outline-none text-blue-700 z-10" id="tab">
+        <span class="flaticon-bar-chart inline-block"></span>
+        <span class="font-semibold">BEP</span>
+      </button>
+      <button
+        class="hover:bg-gray-100 hover:border-gray-100 px-5 border-b-4 border-white focus:outline-none text-gray-700 z-10"
+        id="tab">
+        <span class="flaticon-shopping-bag inline-block"></span>
+        <span class="font-semibold">RAB</span>
+      </button>
+      <button
+        class="hover:bg-gray-100 hover:border-gray-100 px-5 border-b-4 border-white focus:outline-none text-gray-700 z-10"
+        id="tab">
+        <span class="flaticon-user inline-block"></span>
+        <span class="font-semibold">About</span>
+      </button>
+    </div>
+    <div class="relative px-2 py-1 sm:hidden hover:shadow-lg" id="dropdown">
+      <i class="flaticon-list"></i>
+      <div class="hidden flex-column absolute -ml-2 bg-white rounded shadow-lg" id="dropdown-content">
+        <button class="p-2 w-32 text-left hover:bg-gray-100 hover:text-blue-700 rounded-t" id="drop-item">
+          <i class="flaticon-bar-chart"></i>
+          <span class="font-semibold">BEP</span>
+        </button>
+        <button class="p-2 w-32 text-left hover:bg-gray-100 hover:text-blue-700" id="drop-item">
+          <i class="flaticon-shopping-bag"></i>
+          <span class="font-semibold">RAB</span>
+        </button>
+        <button class="p-2 w-32 text-left hover:bg-gray-100 hover:text-blue-700 rounded-b" id="drop-item">
+          <i class="flaticon-user"></i>
+          <span class="font-semibold">About</span>
+        </button>
+      </div>
+    </div>
+    <h1
+      class="w-screen sm:w-auto md:w-screen ml-2 ml-0 md:fixed md:text-center text-center sm:text-left leading-loose mt-1 z-0 text-blue-900 text-lg">
       BEP & RAB Kalkulator
     </h1>
-    <!-- <input id="minimize" class="btn right-0 p-4 w-12 h-10 hover:bg-blue-300 fixed mr-12" type="image" src="assets\icons\down.svg">
+  </div>
+  <!-- <input id="minimize" class="btn right-0 p-4 w-12 h-10 hover:bg-blue-300 fixed mr-12" type="image" src="assets\icons\down.svg">
     <input id="maximize" class="btn fixed p-4 w-12 h-10 hover:bg-blue-300 right-0" type="image" src="assets\icons\up.svg"> -->
   </div>
   <div id="tab-content" class="w-full h-screen flex flex-col sm:flex-row">
     <div id="tahap-penjualan"
-      class="sm:w-64 flex-grow sm:flex-grow-0 mt-16 mb-6 sm:border-r border-gray-400 mr-3 flex flex-col">
+      class="sm:w-64 flex-grow sm:flex-grow-0 relative mt-16 transition-half mb-6 sm:border-r border-gray-400 mr-3 flex flex-col">
       <div id="list-title">
-        <p class="font-thin text-xl p-2 mx-2 text-blue-600 border-b border-gray-400">
+        <p class=" text-xl p-2 mx-2 text-blue-600 border-b border-gray-400">
           <i class="flaticon-box mr-2"></i>
           Tahap Penjualan
         </p>
@@ -111,15 +70,24 @@
         </ul>
       </div>
       <button id="add-phase"
-        class="btn hover:shadow-md block bg-blue-600 w-56 text-lg rounded sm:mx-3 mx-auto my-4 hover:bg-blue-500 text-gray-100">
+        class="btn hover:shadow-md block bg-blue-600 w-56 text-lg rounded transition-half sm:mx-3 mx-auto my-4 hover:bg-blue-500 text-gray-100">
         <!-- <p class="text-2xl flaticon-plus"></p> -->
         <p class="p-2">Tambah Tahap Penjualan</p>
+      </button>
+      <button id="toggle-tahap" class="hidden sm:block absolute -mr-6 pl-1 btn h-full right-0">
+        <svg id="arrow-tahap" class="w-5 left" xmlns="http://www.w3.org/2000/svg" width="29.455" height="16.728"
+          viewBox="0 0 29.455 16.728">
+          <path class="a"
+            d="M26.87,16.97,15.557,5.657,4.243,16.97a2,2,0,0,1-2.829-2.829L14.142,1.414a2,2,0,0,1,2.829,0L29.7,14.142A2,2,0,1,1,26.87,16.97Z"
+            transform="translate(-0.829 -0.829)" /></svg>
       </button>
     </div>
     <div id="main" class="sm:mt-16 flex-grow pb-5 p-3 pt-0 flex-col flex min-h-0 sm:overflow-auto">
       <div id="bep" class=" flex flex-col sm:flex-row mb-5 py-2 border-b border-gray-400 flex-wrap justify-center">
         <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded-lg flex flex-col m-1">
-          <label class="text-pink-500 ">Fixed Cost</label>
+          <label class="text-pink-500 cursor-pointer">Fixed Cost <button id="open-1st-modal"
+              class="float-right btn w-8 hover:bg-pink-500 hover:text-white rounded border border-pink-500"><i
+                id="list-icon" class="flaticon-list"></i></button> </label>
           <input value=0 id="fixed-cost" placeholder="Fixed Cost" type="number"
             class="btn border-b-2 text-gray-500 focus:text-gray-900 focus:border-pink-500 pl-2 bg-transparent flex-grow">
         </div>
@@ -140,18 +108,88 @@
         </div>
         <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded flex flex-col m-1">
           <label class="text-gray-700">Break Event Point (unit)</label>
-          <input readonly id="bep-unit" value=0 placeholder="Production Capacity" type="number"
+          <input readonly id="bep-unit" value=0 placeholder="Break Event Point (unit)" type="number"
             class="btn text-gray-700 pl-2 flex-grow text-lg">
         </div>
         <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded flex flex-col m-1">
           <label class="text-gray-700">Break Event Point (nominal)</label>
-          <input readonly id="bep-nominal" value=0 placeholder="Production Capacity" type="number"
+          <input readonly id="bep-nominal" value=0 placeholder="Break Event Point (nominal)" type="number"
             class="btn text-gray-700 pl-2 flex-grow text-lg">
         </div>
       </div>
-      <div id="chart-wrapper" class="flex-grow sm:overflow-auto">
+      <div id="chart-wrapper" class="flex-grow sm:overflow-hidden">
         <div id="chart" class="max-w-full h-full relative">
           <canvas id="myChart" class=""></canvas>
+        </div>
+      </div>
+    </div>
+    <div id="modal-fixed" class="hidden fixed h-screen w-full flex justify-center transition-half">
+      <button id="gray-area" class="cursor-default btn flex-grow w-1/2"></button>
+      <div id="slide-yeah"
+        class="md:-m-r-1/2 flex-grow bg-white w-full mt-10 flex flex-col md:w-1/2 shadow-2xl relative transition-half">
+        <div class="max-h-full h-full top-0 flex flex-col overflow-auto relative">
+          <div class="text-xl relative w-full font-semibold border-b">
+            <button id="tab-modal" class="btn text-blue-700 border-b-4 border-blue-500 px-2">Fixed Cost</button>
+            <button id="tab-modal"
+              class="btn hover:bg-gray-100 border-b-4 hover:border-gray-100 border-white px-2">Variable Cost</button>
+            <button id="close-1st-modal" class="right-0 absolute mt-2 mr-2 btn">
+              <svg class="w-4 h-4 fill-current text-gray-400 hover:text-pink-400" xmlns="http://www.w3.org/2000/svg"
+                width="59.029" height="59.029" viewBox="0 0 59.029 59.029">
+                <path id="Union_1" data-name="Union 1"
+                  d="M51.108,59.757,32,40.649,12.892,59.757a6,6,0,0,1-8.485,0l-.164-.163a6,6,0,0,1,0-8.486L23.351,32,4.243,12.892a6,6,0,0,1,0-8.485l.164-.164a6,6,0,0,1,8.485,0L32,23.351,51.108,4.243a6,6,0,0,1,8.486,0l.163.164a6,6,0,0,1,0,8.485L40.649,32,59.757,51.108a6,6,0,0,1,0,8.486l-.163.163a6,6,0,0,1-8.486,0Z"
+                  transform="translate(-2.486 -2.486)" />
+              </svg>
+            </button>
+          </div>
+          <ul id="fixed-cost-item-list" class="px-5 flex flex-wrap justify-around"></ul>
+          <ul id="variable-cost-item-list" class="hidden px-5 flex flex-wrap justify-around"></ul>
+          <div class="flex flex-row h-32 pb-10 justify-around w-full px-5 mt-10">
+            <button id="add-modal-open"
+              class="flex-grow-0 p-1 h-16 px-5 text-lg rounded bg-blue-600 text-white hover:bg-blue-500 btn">Tambah
+              Barang Baru</button>
+            <h1 class="text-xl flex-grow text-right text-purple-500 font-semibold">Total Belanja: Rp <span
+                id="total">0</span>,00</h1>
+          </div>
+        </div>
+        <div id="add-modal"
+          class="w-full md:w-1/2 h-screen fixed top-0 right-0 flex-col flex justify-center px-1 sm:px-10 py-32 hidden">
+          <button class="w-screen fixed right-0 bg-transparent h-screen" id="close-add-modal"></button>
+          <div id="add-modal-modal"
+            class="z-10 flex flex-col w-5/6 mx-auto justify-between shadow-2xl rounded-lg bg-white p-5">
+            <div class="flex-grow m-2">
+              <p class="text-xl">Nama Barang</p>
+              <input id="-nama"
+                class="btn focus:bg-white border-2 hover:bg-gray-100 bg-gray-300 px-1 rounded min-w-full" type="text">
+            </div>
+            <div class="flex-grow m-2">
+              <p class="text-xl">Harga Barang</p>
+              <input id="-harga"
+                class="btn focus:bg-white border-2 hover:bg-gray-100 bg-gray-300 px-1 rounded min-w-full" type="number">
+            </div>
+            <div class="flex-grow m-2">
+              <p class="text-xl">Jumlah Barang</p>
+              <input id="-jumlah"
+                class="btn focus:bg-white border-2 hover:bg-gray-100 bg-gray-300 px-1 rounded min-w-full" type="number">
+            </div>
+            <div class="flex-grow m-2">
+              <p class="text-xl">Total</p>
+              <input id="-item-total" readonly class="btn px-1 border-2 min-w-full rounded" type="number">
+            </div>
+            <div id="add-version" class="hidden flex justify-around">
+              <button id="add-modal-confirmed" disabled
+                class="text-lg rounded p-1 w-24 bg-blue-500 text-white hover:bg-blue-400">Tambah</button>
+              <button id="add-modal-canceled"
+                class="text-lg rounded p-1 w-24 bg-red-500 text-white hover:bg-red-400">Batal</button>
+            </div>
+            <div id="edit-version" class="hidden flex justify-around">
+              <button id="edit-modal-confirmed"
+                class="text-lg rounded p-1 w-24 bg-blue-500 text-white hover:bg-blue-400">Terapkan</button>
+              <button id="edit-modal-deleted"
+                class="text-lg rounded p-1 w-24 bg-red-500 text-white hover:bg-red-400">Hapus</button>
+              <button id="edit-modal-canceled"
+                class="text-lg rounded p-1 w-24 bg-yellow-500 text-white hover:bg-yellow-400">Batal</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -247,8 +285,10 @@
       </table>
     </div>
     <div id="perencanaan-penjualan" class="my-4 mx-2">
-      <p class="w-full text-xl text-purple-600 p-2 border-b"><i class="flaticon-shopping-bag mr-2"></i> Perencanaan
-        Penjualan <button id="project" class="float-right border border-purple-500 rounded hover:bg-purple-500 hover:text-white px-1 text-base btn">Proyeksikan Grafik BEP <i class="flaticon-bar-chart"></i></button> </p>
+      <p class="w-full text-xl text-purple-600 p-2 border-b">
+        <i class="flaticon-shopping-bag mr-2"></i>
+        Perencanaan Penjualan
+      </p>
       <div class="flex flex-grow flex-wrap">
         <div class="flex-grow flex-col p-2 border-b">
           <p class="text-purple-700 text-lg">Harga Produk</p>
@@ -320,14 +360,16 @@
       <div class="mx-10">
         <div class="flex-col h-48 shadow-lg rounded-lg p-2 m-2 text-center flex-grow w-32">
           <img src="assets\Octocat\Octocat.png" alt="">
-          <a href="https://www.github.com/avrilianb" target="_blank" class="text-lg hover:text-purple-500">GitHub Profile</a>
+          <a href="https://www.github.com/avrilianb" target="_blank" class="text-lg hover:text-purple-500">GitHub
+            Profile</a>
         </div>
       </div>
     </div>
     <div class="sm:w-1/2 w-full px-10">
       <p class="text-2xl text-pink-500 border-b text-center w-full"><i class="flaticon-settings"></i> Tools Used</p>
       <div class="flex flex-wrap">
-        <a href="https://www.tailwindcss.com" target="_blank" class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 hover:text-purple-500 text-center flex-grow w-32">
+        <a href="https://www.tailwindcss.com" target="_blank"
+          class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 hover:text-purple-500 text-center flex-grow w-32">
           <img class="w-16 mx-auto" src="assets\icons\tailwind.png" alt="">
           <div class="text-lg pt-5">
             <p>Tailwind CSS</p>
@@ -336,20 +378,25 @@
         <div class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 text-center flex-grow w-32">
           <img class="mx-auto h-16 w-16 p-2" src="158702-interface-icon-collection\png-\star.png" alt="">
           <div class="text pt-1">
-            Font generated by <a href="http://www.flaticon.com" target="_blank" class="hover:text-blue-500">flaticon.com</a>.
+            Font generated by <a href="http://www.flaticon.com" target="_blank"
+              class="hover:text-blue-500">flaticon.com</a>.
             <p>Under
-              <a href="https://www.creativecommons.org/licenses/by/3.0/" target="_blank" class="hover:text-blue-500">CC</a>:
-              <a data-file="previous-4" href="http://www.flaticon.com/authors/gregor-cresnar" target="_blank" class="hover:text-blue-500">Gregor Cresnar</a>
+              <a href="https://www.creativecommons.org/licenses/by/3.0/" target="_blank"
+                class="hover:text-blue-500">CC</a>:
+              <a data-file="previous-4" href="http://www.flaticon.com/authors/gregor-cresnar" target="_blank"
+                class="hover:text-blue-500">Gregor Cresnar</a>
             </p>
           </div>
         </div>
-        <a href="https://www.electronjs.org" target="_blank" class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 hover:text-purple-500 text-center flex-grow w-32">
+        <a href="https://www.electronjs.org" target="_blank"
+          class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 hover:text-purple-500 text-center flex-grow w-32">
           <img class="mx-auto h-16" src="assets\icons\javascript-electron-logo-s.jpg" alt="">
           <div>
             <p class="text-lg mt-5 px-5">Electron JS</p>
           </div>
         </a>
-        <a href="https://www.chartjs.org" target="_blank" class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 hover:text-purple-500 text-center flex-grow w-32">
+        <a href="https://www.chartjs.org" target="_blank"
+          class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 hover:text-purple-500 text-center flex-grow w-32">
           <img class="mx-auto h-16" src="assets\icons\chartjs-tutsplus.jpg" alt="">
           <div>
             <p class="text-lg px-3 mt-5">Chart.js</p>
@@ -362,10 +409,11 @@
 
   <script src="node_modules/chart.js/dist/Chart.bundle.js"></script>
   <!-- <script src="index.js"></script> -->
-  <script src="data.js"></script>
-  <script src="control.js"></script>
-  <script src="table.js"></script>
-  <script src="ui.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/control.js"></script>
+  <script src="js/table.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/modal.js"></script>
 </body>
 
 </html>

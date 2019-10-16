@@ -1,0 +1,107 @@
+.transition-half {
+  transition: 700ms;
+  /* font-family: 'Helvetica Neue Light'; */
+}
+
+.btn:focus {
+  outline: none;
+}
+
+#list-icon {
+  transition: 0ms;
+}
+
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
+  margin-left: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  background-color: rgba(255, 255, 255, 0.055);
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #a0aec0;
+  /* border-radius: 2.5px 2.5px 2.5px 2.5px; */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #38b2ac;
+}
+
+.right {
+  transform: rotate(90deg);
+}
+
+.left {
+  transform: rotate(-90deg);
+}
+
+#tabel-modal-tetap tr:nth-child(odd),
+#tabel-modal-kerja tr:nth-child(odd) {
+  background-color: #f7fafc;
+  ;
+}
+
+#tabel-modal-tetap tr input:hover {
+  cursor: default;
+}
+
+#biaya-penyusutan td {
+  padding-left: 20px;
+}
+
+#arrow-tahap {
+  fill: #cbd5e0;
+}
+
+#arrow-tahap {
+  transition: 0ms;
+}
+
+#toggle-tahap:hover #arrow-tahap {
+  fill: #3182ce;
+}
+
+#modal-fixed{
+  background: #8881;
+}
+
+#add-modal{
+  background: #8881;
+}
+
+#close-1st-modal{
+  fill: #F687B3;
+}
+
+.-m-r-1\/2{
+  margin-right: -50%;
+}
+
+
+@media (min-width: 768px) {
+  .md\:-m-r-1\/2{
+    margin-right: -100%;
+    margin-left: 100%;
+  }
+}
+
+.hover\:my-5{transition: 200ms;}
+.hover\:my-5:hover {
+  border-color: #e2e8f0;
+}
+
+#dropdown:hover #dropdown-content{
+  display: flex;
+  flex-direction: column;
+}
