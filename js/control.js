@@ -20,7 +20,11 @@ const phaseCreator = function (index) {
       </div>
       <div class="flex pb-2">
         <input id="phase-input" type="number" value="${data.sells[index]}" class="pl-1 bg-transparent focus:outline-none text-gray-900 border-b-2 border-gray-400 hover:border-blue-300 focus:border-blue-500 mx-1 flex-grow w-1" placeholder="Tahap Penjualan">
-        <button id="phase-delete-btn" class="mx-1 focus:outline-none"><i class="flaticon-garbage text-gray-500 hover:text-red-500"></i></button>
+        <button id="phase-delete-btn" class="mx-1 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-6 text-gray-400 hover:text-red-500 -mt-1">
+            <path d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z"/>
+          </svg>
+        </button>
       </div>
     </li>`
   phaseList.appendChild(li);

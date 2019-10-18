@@ -105,3 +105,11 @@ input[type=number]::-webkit-outer-spin-button {
   display: flex;
   flex-direction: column;
 }
+
+#top-bar{
+  -webkit-app-region: drag;
+}
+
+#top-bar button, #dropdown{
+  -webkit-app-region: no-drag;
+}

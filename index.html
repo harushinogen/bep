@@ -11,57 +11,94 @@
   <title>BEP & RAB Kalkulator v1.2</title>
 </head>
 
-<body class="max-h-screen bg-white">
-  <div id="top-bar" class="w-full md:h-10 border-b bg-white flex flex-row z-20 fixed top-0 z-10">
+<body class="max-h-screen bg-white rounded pt-10 h-screen overflow-hidden">
+  <div id="top-bar" class="w-screen md:h-10 bg-blue-500 flex flex-row z-20 fixed top-0 shadow">
     <div id="tablist" class="sm:flex-column sm:flex hidden">
-      <button class="px-5 border-b-4 border-blue-600 focus:outline-none text-blue-700 z-10" id="tab">
-        <span class="flaticon-bar-chart inline-block"></span>
+      <button class="px-5 border-b-4 border-white focus:outline-none text-white z-10" id="tab">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-6 inline-block -mt-1">
+          <path
+            d="M4.13 12H4a2 2 0 1 0 1.8 1.11L7.86 10a2.03 2.03 0 0 0 .65-.07l1.55 1.55a2 2 0 1 0 3.72-.37L15.87 8H16a2 2 0 1 0-1.8-1.11L12.14 10a2.03 2.03 0 0 0-.65.07L9.93 8.52a2 2 0 1 0-3.72.37L4.13 12zM0 4c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4z" />
+        </svg>
         <span class="font-semibold">BEP</span>
       </button>
-      <button
-        class="hover:bg-gray-100 hover:border-gray-100 px-5 border-b-4 border-white focus:outline-none text-gray-700 z-10"
+      <button class="px-5 border-b-4 hover:bg-blue-400 hover:border-blue-400 hover:text-white border-blue-500 focus:outline-none text-blue-100 z-10"
         id="tab">
-        <span class="flaticon-shopping-bag inline-block"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-5 inline-block -mt-1">
+          <path
+            d="M4 2h16l-3 9H4a1 1 0 1 0 0 2h13v2H4a3 3 0 0 1 0-6h.33L3 5 2 2H0V0h3a1 1 0 0 1 1 1v1zm1 18a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm10 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+        </svg>
         <span class="font-semibold">RAB</span>
       </button>
       <button
-        class="hover:bg-gray-100 hover:border-gray-100 px-5 border-b-4 border-white focus:outline-none text-gray-700 z-10"
+        class="px-5 border-b-4 hover:bg-blue-400 hover:border-blue-400 hover:text-white border-blue-500 focus:outline-none text-blue-100 z-10"
         id="tab">
-        <span class="flaticon-user inline-block"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-5 inline-block -mt-1">
+          <path
+            d="M5 5a5 5 0 0 1 10 0v2A5 5 0 0 1 5 7V5zM0 16.68A19.9 19.9 0 0 1 10 14c3.64 0 7.06.97 10 2.68V20H0v-3.32z" />
+        </svg>
         <span class="font-semibold">About</span>
       </button>
     </div>
-    <div class="relative px-2 py-1 sm:hidden hover:shadow-lg" id="dropdown">
-      <i class="flaticon-list"></i>
-      <div class="hidden flex-column absolute -ml-2 bg-white rounded shadow-lg" id="dropdown-content">
-        <button class="p-2 w-32 text-left hover:bg-gray-100 hover:text-blue-700 rounded-t" id="drop-item">
-          <i class="flaticon-bar-chart"></i>
+    <div class="relative px-2 py-2 sm:hidden hover:shadow-lg hover:bg-white hover:bg-white text-white hover:text-blue-500" id="dropdown">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current h-6">
+        <path d="M0 3h20v2H0V3zm0 4h20v2H0V7zm0 4h20v2H0v-2zm0 4h20v2H0v-2z"/>
+      </svg>
+      <div class="hidden flex-column absolute -ml-2 bg-white rounded shadow-lg mt-2" id="dropdown-content">
+        <button class="p-2 w-32 text-left hover:bg-gray-100 hover:text-blue-700 rounded-t btn" id="drop-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-6 inline-block -mt-1">
+            <path
+              d="M4.13 12H4a2 2 0 1 0 1.8 1.11L7.86 10a2.03 2.03 0 0 0 .65-.07l1.55 1.55a2 2 0 1 0 3.72-.37L15.87 8H16a2 2 0 1 0-1.8-1.11L12.14 10a2.03 2.03 0 0 0-.65.07L9.93 8.52a2 2 0 1 0-3.72.37L4.13 12zM0 4c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4z" />
+          </svg>
           <span class="font-semibold">BEP</span>
         </button>
-        <button class="p-2 w-32 text-left hover:bg-gray-100 hover:text-blue-700" id="drop-item">
-          <i class="flaticon-shopping-bag"></i>
+        <button class="p-2 w-32 text-left hover:bg-gray-100 hover:text-blue-700 btn" id="drop-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-5 inline-block -mt-1">
+            <path
+              d="M4 2h16l-3 9H4a1 1 0 1 0 0 2h13v2H4a3 3 0 0 1 0-6h.33L3 5 2 2H0V0h3a1 1 0 0 1 1 1v1zm1 18a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm10 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+          </svg>
           <span class="font-semibold">RAB</span>
         </button>
-        <button class="p-2 w-32 text-left hover:bg-gray-100 hover:text-blue-700 rounded-b" id="drop-item">
-          <i class="flaticon-user"></i>
+        <button class="p-2 w-32 text-left hover:bg-gray-100 hover:text-blue-700 rounded-b btn" id="drop-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-5 inline-block -mt-1">
+            <path
+              d="M5 5a5 5 0 0 1 10 0v2A5 5 0 0 1 5 7V5zM0 16.68A19.9 19.9 0 0 1 10 14c3.64 0 7.06.97 10 2.68V20H0v-3.32z" />
+          </svg>
           <span class="font-semibold">About</span>
         </button>
       </div>
     </div>
     <h1
-      class="w-screen sm:w-auto md:w-screen ml-2 ml-0 md:fixed md:text-center text-center sm:text-left leading-loose mt-1 z-0 text-blue-900 text-lg">
+      class="sm:w-auto md:w-screen ml-2 ml-0 leading-loose h-10 md:fixed md:text-center text-center sm:text-left z-0 text-lg font-semibold text-white">
       BEP & RAB Kalkulator
     </h1>
+    <button id="minimize"
+      class="z-50 btn right-0 px-1 text-white w-10 h-10 hover:text-white hover:bg-blue-400 fixed mr-20 cursor-default bg-blue-500">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current">
+        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+      </svg>
+    </button>
+    <button id="maximize"
+      class="z-50 btn right-0 px-1 text-white w-10 h-10 hover:text-white hover:bg-blue-400 fixed mr-10 cursor-default bg-blue-500">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current">
+        <path d="M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z" />
+      </svg>
+    </button>
+    <button id="close-window"
+      class="z-50 btn right-0 p-3 pt-3 text-white w-10 h-10 hover:text-white hover:bg-red-600 fixed cursor-default bg-blue-500">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current">
+        <path
+          d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
+      </svg>
+    </button>
   </div>
-  <!-- <input id="minimize" class="btn right-0 p-4 w-12 h-10 hover:bg-blue-300 fixed mr-12" type="image" src="assets\icons\down.svg">
-    <input id="maximize" class="btn fixed p-4 w-12 h-10 hover:bg-blue-300 right-0" type="image" src="assets\icons\up.svg"> -->
-  </div>
-  <div id="tab-content" class="w-full h-screen flex flex-col sm:flex-row">
+  <div id="tab-content" class="w-full h-full flex flex-col sm:flex-row overflow-auto">
     <div id="tahap-penjualan"
-      class="sm:w-64 flex-grow sm:flex-grow-0 relative mt-16 transition-half mb-6 sm:border-r border-gray-400 mr-3 flex flex-col">
+      class="sm:w-64 flex-grow sm:flex-grow-0 relative mt-2 transition-half mb-6 sm:border-r border-gray-400 mr-3 flex flex-col">
       <div id="list-title">
         <p class=" text-xl p-2 mx-2 text-blue-600 border-b border-gray-400">
-          <i class="flaticon-box mr-2"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-6 inline-block -mt-1">
+            <path d="M1 4h2v2H1V4zm4 0h14v2H5V4zM1 9h2v2H1V9zm4 0h14v2H5V9zm-4 5h2v2H1v-2zm4 0h14v2H5v-2z" />
+          </svg>
           Tahap Penjualan
         </p>
       </div>
@@ -82,12 +119,10 @@
             transform="translate(-0.829 -0.829)" /></svg>
       </button>
     </div>
-    <div id="main" class="sm:mt-16 flex-grow pb-5 p-3 pt-0 flex-col flex min-h-0 sm:overflow-auto">
+    <div id="main" class="sm:mt-2 flex-grow pb-5 p-3 pt-0 flex-col flex min-h-0 sm:overflow-auto">
       <div id="bep" class=" flex flex-col sm:flex-row mb-5 py-2 border-b border-gray-400 flex-wrap justify-center">
         <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded-lg flex flex-col m-1">
-          <label class="text-pink-500 cursor-pointer">Fixed Cost <button id="open-1st-modal"
-              class="float-right btn w-8 hover:bg-pink-500 hover:text-white rounded border border-pink-500"><i
-                id="list-icon" class="flaticon-list"></i></button> </label>
+          <label class="text-pink-500 cursor-pointer">Fixed Cost</label>
           <input value=0 id="fixed-cost" placeholder="Fixed Cost" type="number"
             class="btn border-b-2 text-gray-500 focus:text-gray-900 focus:border-pink-500 pl-2 bg-transparent flex-grow">
         </div>
@@ -116,8 +151,13 @@
           <input readonly id="bep-nominal" value=0 placeholder="Break Event Point (nominal)" type="number"
             class="btn text-gray-700 pl-2 flex-grow text-lg">
         </div>
+        <button id="open-1st-modal" class="float-right btn w-8 hover:bg-blue-400 text-white fixed right-0 top-0 mt-32 shadow-lg rounded-l-lg bg-blue-500 px-2 w-10">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current h-10 inline-block -ml-2">
+            <path d="M7.05 9.293L6.343 10 12 15.657l1.414-1.414L9.172 10l4.242-4.243L12 4.343z"/>
+          </svg>
+        </button>
       </div>
-      <div id="chart-wrapper" class="flex-grow sm:overflow-hidden">
+      <div id="chart-wrapper" class="flex-grow h-64 sm:h-auto sm:overflow-hidden">
         <div id="chart" class="max-w-full h-full relative">
           <canvas id="myChart" class=""></canvas>
         </div>
@@ -126,19 +166,16 @@
     <div id="modal-fixed" class="hidden fixed h-screen w-full flex justify-center transition-half">
       <button id="gray-area" class="cursor-default btn flex-grow w-1/2"></button>
       <div id="slide-yeah"
-        class="md:-m-r-1/2 flex-grow bg-white w-full mt-10 flex flex-col md:w-1/2 shadow-2xl relative transition-half">
+        class="md:-m-r-1/2 flex-grow bg-white w-full flex flex-col md:w-1/2 shadow-2xl relative transition-half">
         <div class="max-h-full h-full top-0 flex flex-col overflow-auto relative">
           <div class="text-xl relative w-full font-semibold border-b">
             <button id="tab-modal" class="btn text-blue-700 border-b-4 border-blue-500 px-2">Fixed Cost</button>
             <button id="tab-modal"
               class="btn hover:bg-gray-100 border-b-4 hover:border-gray-100 border-white px-2">Variable Cost</button>
-            <button id="close-1st-modal" class="right-0 absolute mt-2 mr-2 btn">
-              <svg class="w-4 h-4 fill-current text-gray-400 hover:text-pink-400" xmlns="http://www.w3.org/2000/svg"
-                width="59.029" height="59.029" viewBox="0 0 59.029 59.029">
-                <path id="Union_1" data-name="Union 1"
-                  d="M51.108,59.757,32,40.649,12.892,59.757a6,6,0,0,1-8.485,0l-.164-.163a6,6,0,0,1,0-8.486L23.351,32,4.243,12.892a6,6,0,0,1,0-8.485l.164-.164a6,6,0,0,1,8.485,0L32,23.351,51.108,4.243a6,6,0,0,1,8.486,0l.163.164a6,6,0,0,1,0,8.485L40.649,32,59.757,51.108a6,6,0,0,1,0,8.486l-.163.163a6,6,0,0,1-8.486,0Z"
-                  transform="translate(-2.486 -2.486)" />
-              </svg>
+            <button id="close-1st-modal" class="right-0 absolute mt-2 mr-2 btn hover:text-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-6 fill-current">
+                  <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/>
+                </svg>
             </button>
           </div>
           <ul id="fixed-cost-item-list" class="px-5 flex flex-wrap justify-around"></ul>
@@ -194,10 +231,13 @@
       </div>
     </div>
   </div>
-  <div id="tab-content" class="flex flex-col hidden overflow-auto max-h-screen">
-    <div id="modal-tetap" class="mb-4 mt-16 m-2">
+  <div id="tab-content" class="flex flex-col hidden overflow-auto h-full max-h-full">
+    <div id="modal-tetap" class="mb-4 m-2">
       <div class="border-b text-xl text-gray-100 p-2">
-        <p class="inline-block text-teal-500"><i class="flaticon-box mr-2"></i>
+        <p class="inline-block text-teal-500">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-6 fill-current inline-block -mt-2">
+            <path d="M10.5 20H0V7l5 3.33V7l5 3.33V7l5 3.33V0h5v20h-9.5z"/>
+          </svg>
           Modal Tetap</p>
         <!-- <button id="show-table-1"><i class="flaticon-next-1 text-teal-500"></i></button> -->
       </div>
@@ -221,7 +261,10 @@
     </div>
     <div id="modal-kerja" class="m-2 my-4">
       <div class="text-xl text-pink-500 p-2 border-b">
-        <p class="inline-block"><i class="flaticon-box mr-2"></i> Modal Kerja</p>
+        <p class="inline-block">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-5 fill-current inline-block -mt-1">
+            <path d="M3.94 6.5L2.22 3.64l1.42-1.42L6.5 3.94c.52-.3 1.1-.54 1.7-.7L9 0h2l.8 3.24c.6.16 1.18.4 1.7.7l2.86-1.72 1.42 1.42-1.72 2.86c.3.52.54 1.1.7 1.7L20 9v2l-3.24.8c-.16.6-.4 1.18-.7 1.7l1.72 2.86-1.42 1.42-2.86-1.72c-.52.3-1.1.54-1.7.7L11 20H9l-.8-3.24c-.6-.16-1.18-.4-1.7-.7l-2.86 1.72-1.42-1.42 1.72-2.86c-.3-.52-.54-1.1-.7-1.7L0 11V9l3.24-.8c.16-.6.4-1.18.7-1.7zM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          </svg> Modal Kerja</p>
         <!-- <input id="show-table-2" class="inline-block w-6 m-1 mx-2 btn float-right" type="image"
           src="assets\icons\up.svg"> -->
       </div>
@@ -244,7 +287,10 @@
       </div>
     </div>
     <div id="biaya-penyusutan" class="my-4 mx-2 text-xl">
-      <p class="text-blue-600 p-2 border-b"><i class="flaticon-box mr-2"></i> Biaya Penyusutan</p>
+      <p class="text-blue-600 p-2 border-b">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-5 inline-block fill-current -mt-1">
+          <path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm1-5h1a3 3 0 0 0 0-6H7.99a1 1 0 0 1 0-2H14V5h-3V3H9v2H8a3 3 0 1 0 0 6h4a1 1 0 1 1 0 2H6v2h3v2h2v-2z"/>
+        </svg> Biaya Penyusutan</p>
       <table class="w-full text-blue-700 table-fixed text-lg">
         <tr class="bg-blue-100">
           <td class="border-r-2 border-blue-200">Modal Tetap:</td>
@@ -267,8 +313,10 @@
       </table>
     </div>
     <div id="biaya-total" class="my-4 mx-2">
-      <p class="w-full text-orange-500 text-xl border-b p-2"><i class="flaticon-shopping-bag mr-2"></i> Biaya
-        Keseluruhan</p>
+      <p class="w-full text-orange-500 text-xl border-b p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-5 inline-block fill-current -mt-1">
+          <path d="M2 2c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm3 1v2h10V3H5zm0 4v2h2V7H5zm4 0v2h2V7H9zm4 0v2h2V7h-2zm-8 4v2h2v-2H5zm4 0v2h2v-2H9zm4 0v6h2v-6h-2zm-8 4v2h2v-2H5zm4 0v2h2v-2H9z"/>
+        </svg> Biaya Keseluruhan</p>
       <table class="table-fixed text-lg w-full text-orange-500">
         <tr>
           <td class="pl-5">Penyusutan Selama 1 Tahun</td>
@@ -286,7 +334,9 @@
     </div>
     <div id="perencanaan-penjualan" class="my-4 mx-2">
       <p class="w-full text-xl text-purple-600 p-2 border-b">
-        <i class="flaticon-shopping-bag mr-2"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-5 -mt-1 inline-block">
+            <path d="M0 10V2l2-2h8l10 10-10 10L0 10zm4.5-4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+          </svg>
         Perencanaan Penjualan
       </p>
       <div class="flex flex-grow flex-wrap">
@@ -318,7 +368,10 @@
       </div>
     </div>
     <div id="laba" class="mx-2 my-4">
-      <p class="text-indigo-500 w-full p-2 text-xl"><i class="flaticon-speech-bubble-3 mr-2"></i> Laba</p>
+      <p class="text-indigo-500 w-full p-2 text-xl">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-5 -mt-1 inline-block">
+          <path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM6.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm7 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm2.16 3a6 6 0 0 1-11.32 0h11.32z"/>
+        </svg> Laba</p>
       <div class="flex">
         <div id="bruto" class="m-2 flex-grow p-2 rounded-lg shadow-lg border">
           <p class="text-3xl sm:text-center text-left">Laba Bruto</p>
@@ -366,7 +419,10 @@
       </div>
     </div>
     <div class="sm:w-1/2 w-full px-10">
-      <p class="text-2xl text-pink-500 border-b text-center w-full"><i class="flaticon-settings"></i> Tools Used</p>
+      <p class="text-2xl text-pink-500 border-b text-center w-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-5 fill-current inline-block -mt-1">
+          <path d="M3.94 6.5L2.22 3.64l1.42-1.42L6.5 3.94c.52-.3 1.1-.54 1.7-.7L9 0h2l.8 3.24c.6.16 1.18.4 1.7.7l2.86-1.72 1.42 1.42-1.72 2.86c.3.52.54 1.1.7 1.7L20 9v2l-3.24.8c-.16.6-.4 1.18-.7 1.7l1.72 2.86-1.42 1.42-2.86-1.72c-.52.3-1.1.54-1.7.7L11 20H9l-.8-3.24c-.6-.16-1.18-.4-1.7-.7l-2.86 1.72-1.42-1.42 1.72-2.86c-.3-.52-.54-1.1-.7-1.7L0 11V9l3.24-.8c.16-.6.4-1.18.7-1.7zM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        </svg> Tools Used</p>
       <div class="flex flex-wrap">
         <a href="https://www.tailwindcss.com" target="_blank"
           class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 hover:text-purple-500 text-center flex-grow w-32">
@@ -375,7 +431,7 @@
             <p>Tailwind CSS</p>
           </div>
         </a>
-        <div class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 text-center flex-grow w-32">
+        <!-- <div class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 text-center flex-grow w-32">
           <img class="mx-auto h-16 w-16 p-2" src="158702-interface-icon-collection\png-\star.png" alt="">
           <div class="text pt-1">
             Font generated by <a href="http://www.flaticon.com" target="_blank"
@@ -387,7 +443,7 @@
                 class="hover:text-blue-500">Gregor Cresnar</a>
             </p>
           </div>
-        </div>
+        </div> -->
         <a href="https://www.electronjs.org" target="_blank"
           class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 hover:text-purple-500 text-center flex-grow w-32">
           <img class="mx-auto h-16" src="assets\icons\javascript-electron-logo-s.jpg" alt="">

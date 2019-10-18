@@ -1,15 +1,15 @@
 const deadactivateTabs = function(){
   $$("#tab").forEach((tab, index) => {
-    tab.className = "hover:bg-gray-100 hover:border-gray-100 hidden sm:block px-5 border-b-4 border-white focus:outline-none text-blue-800 z-10";
+    tab.className = "px-5 border-b-4 hover:bg-blue-400 hover:border-blue-400 hover:text-white border-blue-500 focus:outline-none text-blue-100 z-10";
     $$("#tab-content")[index].className = "w-full h-screen flex-col sm:flex-row hidden";
   })
 }
 
 const activateTab = function(index){
-  $$("#tab")[index].className = "px-5 border-b-4 border-blue-600 hidden sm:block focus:outline-none text-blue-700 z-10";
-  $$("#tab-content")[index].className = "w-full h-screen flex flex-col";
+  $$("#tab")[index].className = "px-5 border-b-4 border-white focus:outline-none text-white z-10";
+  $$("#tab-content")[index].className = "h-full flex flex-col max-h-full overflow-auto";
   if (index === 0) $$("#tab-content")[index].className += " sm:flex-row";
-  if (index === 2) $$("#tab-content")[index].className = "w-full pt-16 pb-6 h-screen flex flex-col sm:flex-row";
+  if (index === 2) $$("#tab-content")[index].className = "w-full pt-2 pb-6 h-screen flex flex-col sm:flex-row overflow-auto";
 }
 
 $$("#tab").forEach((tab, index) => {
@@ -82,6 +82,22 @@ const switchTabs = function (index) {
   pointer.isFixed = !pointer.isFixed;
   updateTotal();
 }
+const electron = require('electron');
+const { remote } = require('electron')
+
 
 $$('#tab-modal')[0].addEventListener('click', () => switchTabs(0));
 $$('#tab-modal')[1].addEventListener('click', () => switchTabs(1));
+
+$('#minimize').addEventListener('click', () => {
+  remote.BrowserWindow.getFocusedWindow().minimize();
+})
+
+$('#maximize').addEventListener('click', () => {
+  const window = remote.BrowserWindow.getFocusedWindow();
+  window.isMaximized() ? window.unmaximize() : window.maximize();
+})
+
+$('#close-window').addEventListener('click', () => {
+  remote.BrowserWindow.getFocusedWindow().close();
+})

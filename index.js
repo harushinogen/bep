@@ -1,13 +1,13 @@
 'use strict'
 
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 
 function createWindow () {
 // Create the browser window.
 	let win = new BrowserWindow({
 		width: 900,
 		height: 600,
-		// frame: false,
+		frame: false,
 		webPreferences: {
 				nodeIntegration: true
 		}
@@ -23,6 +23,13 @@ function createWindow () {
 	Menu.setApplicationMenu(null);
 	// document.getElementById('minimize').addEventListener('click', win.minimize)
 }
+
+const path = require('path')
+
+require('electron-reload')(__dirname, {
+  electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
+  hardResetMethod: 'exit'
+});
 
 app.on('ready', createWindow)
 	
