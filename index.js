@@ -20,7 +20,7 @@ function createWindow () {
 		require('electron').shell.openExternal(url);
 	})
 	// win.maximize();
-	Menu.setApplicationMenu(null);
+	// Menu.setApplicationMenu(null);
 	// document.getElementById('minimize').addEventListener('click', win.minimize)
 }
 

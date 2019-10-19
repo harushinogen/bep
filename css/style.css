@@ -11,32 +11,25 @@
   transition: 0ms;
 }
 
-[class^="flaticon-"]:before,
-[class*=" flaticon-"]:before,
-[class^="flaticon-"]:after,
-[class*=" flaticon-"]:after {
-  margin-left: 0;
-}
-
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   background-color: rgba(255, 255, 255, 0.055);
   width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #a0aec0;
+  background-color: #a0aec0; */
   /* border-radius: 2.5px 2.5px 2.5px 2.5px; */
-}
+/* }
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #38b2ac;
-}
+} */
 
 .right {
   transform: rotate(90deg);
@@ -89,11 +82,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
-@media (min-width: 768px) {
-  .md\:-m-r-1\/2{
-    margin-right: -100%;
-    margin-left: 100%;
-  }
+.md\:-m-r-1\/2{
+  margin-right: -100%;
+  margin-left: 100%;
 }
 
 .hover\:my-5{transition: 200ms;}

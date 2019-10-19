@@ -5,9 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="158702-interface-icon-collection/font/flaticon.css" />
+  <meta name="theme-color" content="#3182ce">
+  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="css/output.css" />
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="16x16">
   <title>BEP & RAB Kalkulator v1.2</title>
 </head>
 
@@ -72,19 +74,19 @@
       BEP & RAB Kalkulator
     </h1>
     <button id="minimize"
-      class="z-50 btn right-0 px-1 text-white w-10 h-10 hover:text-white hover:bg-blue-400 fixed mr-20 cursor-default bg-blue-500">
+      class="z-50 btn right-0 px-1 text-white w-10 h-10 hover:text-white hover:bg-blue-400 fixed mr-20 cursor-default bg-blue-500 hidden">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current">
         <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
       </svg>
     </button>
     <button id="maximize"
-      class="z-50 btn right-0 px-1 text-white w-10 h-10 hover:text-white hover:bg-blue-400 fixed mr-10 cursor-default bg-blue-500">
+      class="z-50 btn right-0 px-1 text-white w-10 h-10 hover:text-white hover:bg-blue-400 fixed mr-10 cursor-default bg-blue-500 hidden">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current">
         <path d="M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z" />
       </svg>
     </button>
     <button id="close-window"
-      class="z-50 btn right-0 p-3 pt-3 text-white w-10 h-10 hover:text-white hover:bg-red-600 fixed cursor-default bg-blue-500">
+      class="z-50 btn right-0 p-3 pt-3 text-white w-10 h-10 hover:text-white hover:bg-red-600 fixed cursor-default bg-blue-500 hidden">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current">
         <path
           d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
@@ -151,20 +153,20 @@
           <input readonly id="bep-nominal" value=0 placeholder="Break Event Point (nominal)" type="number"
             class="btn text-gray-700 pl-2 flex-grow text-lg">
         </div>
-        <button id="open-1st-modal" class="float-right btn w-8 hover:bg-blue-400 text-white fixed right-0 top-0 mt-32 shadow-lg rounded-l-lg bg-blue-500 px-2 w-10">
+        <button id="open-1st-modal" class="float-right btn w-8 hover:bg-blue-400 text-white fixed right-0 top-0 mt-12 shadow-lg rounded-l-lg bg-blue-500 px-2 w-10">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current h-10 inline-block -ml-2">
             <path d="M7.05 9.293L6.343 10 12 15.657l1.414-1.414L9.172 10l4.242-4.243L12 4.343z"/>
           </svg>
         </button>
       </div>
-      <div id="chart-wrapper" class="flex-grow h-64 sm:h-auto sm:overflow-hidden">
+      <div id="chart-wrapper" class="sm:flex-grow h-screen sm:h-auto sm:overflow-hidden">
         <div id="chart" class="max-w-full h-full relative">
           <canvas id="myChart" class=""></canvas>
         </div>
       </div>
     </div>
     <div id="modal-fixed" class="hidden fixed h-screen w-full flex justify-center transition-half">
-      <button id="gray-area" class="cursor-default btn flex-grow w-1/2"></button>
+      <button id="gray-area" class="cursor-default btn sm:flex-grow min-w-0 sm:w-1/2"></button>
       <div id="slide-yeah"
         class="md:-m-r-1/2 flex-grow bg-white w-full flex flex-col md:w-1/2 shadow-2xl relative transition-half">
         <div class="max-h-full h-full top-0 flex flex-col overflow-auto relative">
@@ -412,7 +414,7 @@
       <p class="text-2xl text-center mx-10 text-indigo-600">XII - TKJ</p>
       <div class="mx-10">
         <div class="flex-col h-48 shadow-lg rounded-lg p-2 m-2 text-center flex-grow w-32">
-          <img src="assets\Octocat\Octocat.png" alt="">
+          <img src="assets\Octocat\Octocat.jpg" alt="">
           <a href="https://www.github.com/avrilianb" target="_blank" class="text-lg hover:text-purple-500">GitHub
             Profile</a>
         </div>
@@ -463,6 +465,7 @@
   </div>
   <!-- <div id="tab-content" class="w-full h-screen flex-col sm:flex-row hidden">Options</div> -->
 
+  <script src="js/pwa.js"></script>
   <script src="node_modules/chart.js/dist/Chart.bundle.js"></script>
   <!-- <script src="index.js"></script> -->
   <script src="js/data.js"></script>

@@ -82,22 +82,27 @@ const switchTabs = function (index) {
   pointer.isFixed = !pointer.isFixed;
   updateTotal();
 }
-const electron = require('electron');
-const { remote } = require('electron')
-
 
 $$('#tab-modal')[0].addEventListener('click', () => switchTabs(0));
 $$('#tab-modal')[1].addEventListener('click', () => switchTabs(1));
 
-$('#minimize').addEventListener('click', () => {
-  remote.BrowserWindow.getFocusedWindow().minimize();
-})
+if (!navigator.doNotTrack) {
+  const electron = require('electron');
+  const { remote } = require('electron')
 
-$('#maximize').addEventListener('click', () => {
-  const window = remote.BrowserWindow.getFocusedWindow();
-  window.isMaximized() ? window.unmaximize() : window.maximize();
-})
+  $('#minimize').classList.toggle('hidden');
+  $('#maximize').classList.toggle('hidden');
+  $('#close-window').classList.toggle('hidden');
+  $('#minimize').addEventListener('click', () => {
+    remote.BrowserWindow.getFocusedWindow().minimize();
+  })
 
-$('#close-window').addEventListener('click', () => {
-  remote.BrowserWindow.getFocusedWindow().close();
-})
+  $('#maximize').addEventListener('click', () => {
+    const window = remote.BrowserWindow.getFocusedWindow();
+    window.isMaximized() ? window.unmaximize() : window.maximize();
+  })
+
+  $('#close-window').addEventListener('click', () => {
+    remote.BrowserWindow.getFocusedWindow().close();
+  })
+}
