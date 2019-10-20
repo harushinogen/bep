@@ -1,4 +1,4 @@
-# bep
+# BEP & RAB Kalkulator
 The Most Powerful BEP Calculator in the history of SMKN3 Jombang!
 
 How To Install All Dependencies
