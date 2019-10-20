@@ -88,7 +88,8 @@ $$('#tab-modal')[1].addEventListener('click', () => switchTabs(1));
 
 if (!navigator.doNotTrack) {
   const electron = require('electron');
-  const { remote } = require('electron')
+  const { remote } = require('electron');
+  const ipc = electron.ipcRenderer;
 
   $('#minimize').classList.toggle('hidden');
   $('#maximize').classList.toggle('hidden');
@@ -106,3 +107,4 @@ if (!navigator.doNotTrack) {
     remote.BrowserWindow.getFocusedWindow().close();
   })
 }
+

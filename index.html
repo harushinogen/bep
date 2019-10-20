@@ -14,7 +14,7 @@
 </head>
 
 <body class="max-h-screen bg-white rounded pt-10 h-screen overflow-hidden">
-  <div id="top-bar" class="w-screen md:h-10 bg-blue-500 flex flex-row z-20 fixed top-0 shadow">
+  <div id="top-bar" class="w-screen md:h-10 bg-blue-500 flex flex-row z-20 fixed top-0">
     <div id="tablist" class="sm:flex-column sm:flex hidden">
       <button class="px-5 border-b-4 border-white focus:outline-none text-white z-10" id="tab">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-6 inline-block -mt-1">
@@ -40,13 +40,27 @@
         </svg>
         <span class="font-semibold">About</span>
       </button>
+      <button
+        class="px-5 border-b-4 hover:bg-blue-400 hover:border-blue-400 hover:text-white border-blue-500 focus:outline-none text-blue-100 z-10"
+        id="tab">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-5 inline-block -mt-1">
+          <path d="M0 2C0 .9.9 0 2 0h14l4 4v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5 0v6h10V2H5zm6 1h3v4h-3V3z"/>
+        </svg>
+      </button>
+      <button
+        class="px-5 border-b-4 hover:bg-blue-400 hover:border-blue-400 hover:text-white border-blue-500 focus:outline-none text-blue-100 z-10"
+        id="tab">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-5 inline-block -mt-1">
+          <path d="M13 10v6H7v-6H2l8-8 8 8h-5zM0 18h20v2H0v-2z"/>
+        </svg>
+      </button>
     </div>
     <div class="relative px-2 py-2 sm:hidden hover:shadow-lg hover:bg-white hover:bg-white text-white hover:text-blue-500" id="dropdown">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current h-6">
         <path d="M0 3h20v2H0V3zm0 4h20v2H0V7zm0 4h20v2H0v-2zm0 4h20v2H0v-2z"/>
       </svg>
-      <div class="hidden flex-column absolute -ml-2 bg-white rounded shadow-lg mt-2" id="dropdown-content">
-        <button class="p-2 w-32 text-left hover:bg-gray-100 hover:text-blue-700 rounded-t btn" id="drop-item">
+      <div class="hidden flex-column absolute -ml-2 bg-white rounded rounded-tl-none shadow-lg mt-2" id="dropdown-content">
+        <button class="p-2 w-32 text-left hover:bg-gray-100 hover:text-blue-700 rounded-tr btn" id="drop-item">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-6 inline-block -mt-1">
             <path
               d="M4.13 12H4a2 2 0 1 0 1.8 1.11L7.86 10a2.03 2.03 0 0 0 .65-.07l1.55 1.55a2 2 0 1 0 3.72-.37L15.87 8H16a2 2 0 1 0-1.8-1.11L12.14 10a2.03 2.03 0 0 0-.65.07L9.93 8.52a2 2 0 1 0-3.72.37L4.13 12zM0 4c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4z" />
@@ -60,17 +74,29 @@
           </svg>
           <span class="font-semibold">RAB</span>
         </button>
-        <button class="p-2 w-32 text-left hover:bg-gray-100 hover:text-blue-700 rounded-b btn" id="drop-item">
+        <button class="p-2 w-32 text-left hover:bg-gray-100 hover:text-blue-700 btn" id="drop-item">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-5 inline-block -mt-1">
             <path
               d="M5 5a5 5 0 0 1 10 0v2A5 5 0 0 1 5 7V5zM0 16.68A19.9 19.9 0 0 1 10 14c3.64 0 7.06.97 10 2.68V20H0v-3.32z" />
           </svg>
           <span class="font-semibold">About</span>
         </button>
+        <button class="ml-2 p-2 pr-0 w-32 text-left hover:bg-gray-100 hover:text-blue-700 btn" id="drop-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-5 inline-block -mt-1">
+            <path d="M0 2C0 .9.9 0 2 0h14l4 4v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5 0v6h10V2H5zm6 1h3v4h-3V3z"/>
+          </svg>
+          <span class="font-semibold">Save</span>
+        </button>
+        <button class="ml-2 p-2 pr-0 w-32 text-left hover:bg-gray-100 hover:text-blue-700 rounded-br btn" id="drop-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-5 inline-block -mt-1">
+            <path d="M13 10v6H7v-6H2l8-8 8 8h-5zM0 18h20v2H0v-2z"/>
+          </svg>
+          <span class="font-semibold">Load</span>
+        </button>
       </div>
     </div>
     <h1
-      class="sm:w-auto md:w-screen ml-2 ml-0 leading-loose h-10 md:fixed md:text-center text-center sm:text-left z-0 text-lg font-semibold text-white">
+      class="sm:w-auto lg:w-screen ml-2 ml-0 leading-loose h-10 lg:fixed lg:text-center text-center sm:text-left z-0 text-lg font-semibold text-white">
       BEP & RAB Kalkulator
     </h1>
     <button id="minimize"
@@ -123,32 +149,32 @@
     </div>
     <div id="main" class="sm:mt-2 flex-grow pb-5 p-3 pt-0 flex-col flex min-h-0 sm:overflow-auto">
       <div id="bep" class=" flex flex-col sm:flex-row mb-5 py-2 border-b border-gray-400 flex-wrap justify-center">
-        <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded-lg flex flex-col m-1">
+        <div class="flex-grow sm:w-48 lg:w-1/7 mx-1 px-2 rounded-lg flex flex-col m-1">
           <label class="text-pink-500 cursor-pointer">Fixed Cost</label>
           <input value=0 id="fixed-cost" placeholder="Fixed Cost" type="number"
             class="btn border-b-2 text-gray-500 focus:text-gray-900 focus:border-pink-500 pl-2 bg-transparent flex-grow">
         </div>
-        <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded-lg flex flex-col m-1">
+        <div class="flex-grow sm:w-48 lg:w-1/7 mx-1 px-2 rounded-lg flex flex-col m-1">
           <label class="text-orange-500 ">Variable Cost</label>
           <input value=0 id="variable-cost" placeholder="Variable Cost" type="number"
             class="btn border-b-2 text-gray-500 focus:text-gray-900 focus:border-orange-500 pl-2 bg-transparent flex-grow">
         </div>
-        <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded-lg flex flex-col m-1">
+        <div class="flex-grow sm:w-48 lg:w-1/7 mx-1 px-2 rounded-lg flex flex-col m-1">
           <label class="text-teal-500 ">Product Price</label>
           <input value=0 id="product-price" placeholder="Product Price" type="number"
             class="btn border-b-2 text-gray-500 focus:text-gray-900 focus:border-teal-500 pl-2 bg-transparent flex-grow">
         </div>
-        <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded-lg flex flex-col m-1">
+        <div class="flex-grow sm:w-48 lg:w-1/7 mx-1 px-2 rounded-lg flex flex-col m-1">
           <label class="text-blue-500 ">Production Capacity</label>
           <input value=0 id="production-capacity" placeholder="Production Capacity" type="number"
             class="btn border-b-2 text-gray-500 focus:text-gray-900 focus:border-blue-500 pl-2 bg-transparent flex-grow">
         </div>
-        <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded flex flex-col m-1">
+        <div class="flex-grow sm:w-48 lg:w-1/7 mx-1 px-2 rounded flex flex-col m-1">
           <label class="text-gray-700">Break Event Point (unit)</label>
           <input readonly id="bep-unit" value=0 placeholder="Break Event Point (unit)" type="number"
             class="btn text-gray-700 pl-2 flex-grow text-lg">
         </div>
-        <div class="flex-grow sm:w-48 lg:w-64 mx-1 px-2 rounded flex flex-col m-1">
+        <div class="flex-grow sm:w-48 lg:w-1/7 mx-1 px-2 rounded flex flex-col m-1">
           <label class="text-gray-700">Break Event Point (nominal)</label>
           <input readonly id="bep-nominal" value=0 placeholder="Break Event Point (nominal)" type="number"
             class="btn text-gray-700 pl-2 flex-grow text-lg">
@@ -182,10 +208,9 @@
           </div>
           <ul id="fixed-cost-item-list" class="px-5 flex flex-wrap justify-around"></ul>
           <ul id="variable-cost-item-list" class="hidden px-5 flex flex-wrap justify-around"></ul>
-          <div class="flex flex-row h-32 pb-10 justify-around w-full px-5 mt-10">
+          <div class="flex flex-col-reverse md:flex-row h-32 pb-10 justify-around w-full px-5 mt-10">
             <button id="add-modal-open"
-              class="flex-grow-0 p-1 h-16 px-5 text-lg rounded bg-blue-600 text-white hover:bg-blue-500 btn">Tambah
-              Barang Baru</button>
+              class="flex-grow-0 p-1 h-16 px-5 text-lg rounded bg-blue-600 text-white hover:bg-blue-500 btn">Tambah Barang Baru</button>
             <h1 class="text-xl flex-grow text-right text-purple-500 font-semibold">Total Belanja: Rp <span
                 id="total">0</span>,00</h1>
           </div>
@@ -194,7 +219,7 @@
           class="w-full md:w-1/2 h-screen fixed top-0 right-0 flex-col flex justify-center px-1 sm:px-10 py-32 hidden">
           <button class="w-screen fixed right-0 bg-transparent h-screen" id="close-add-modal"></button>
           <div id="add-modal-modal"
-            class="z-10 flex flex-col w-5/6 mx-auto justify-between shadow-2xl rounded-lg bg-white p-5">
+            class="z-10 flex flex-col w-full sm:w-5/6 mx-auto justify-between shadow-2xl rounded-lg bg-white h-full md:h-auto p-1 sm:p-5">
             <div class="flex-grow m-2">
               <p class="text-xl">Nama Barang</p>
               <input id="-nama"
@@ -255,7 +280,7 @@
         <tbody id="tabel-modal-tetap">
         </tbody>
       </table>
-      <div class="flex w-full justify-between border-t border-gray-400 text-gray-100 p-2">
+      <div class="flex flex-col-reverse sm:flex-row w-full justify-between border-t border-gray-400 text-gray-100 p-2">
         <button id="tambah-barang-tetap"
           class="hover:shadow-lg hover:bg-teal-500 rounded btn bg-teal-600 p-2 px-5 text-lg">Tambah Barang Baru</button>
         <span id="total-tetap" class="text-teal-600 mx-5 text-lg leading-loose"></span>
@@ -282,7 +307,7 @@
         <tbody id="tabel-modal-kerja">
         </tbody>
       </table>
-      <div class="flex w-full justify-between border-t border-gray-400 text-gray-100 p-2">
+      <div class="flex flex-col-reverse sm:flex-row w-full justify-between border-t border-gray-400 text-gray-100 p-2">
         <button id="tambah-barang-kerja"
           class="btn hover:bg-pink-400 hover:shadow-lg bg-pink-500 px-5 text-lg p-2 rounded">Tambah Barang Baru</button>
         <span id="total-kerja" class="mx-5 text-pink-500 text-lg leading-loose"></span>
@@ -356,7 +381,7 @@
           <p class="text-purple-700 text-lg">Laba</p>
           <input id="laba" value=1 type="number"
             class="w-full hover:border-purple-300 border-b-2 bg-white btn focus:border-purple-500 px-2">
-          <p class="relative float-right text-purple-500 -ml-5">%</p>
+          <p class="relative float-right text-purple-500 -mt-6 -ml-5">%</p>
         </div>
         <div class="flex-grow flex-col p-2 border-b">
           <p class="text-purple-700 text-lg">Harga Jual Pokok</p>
@@ -374,7 +399,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-5 -mt-1 inline-block">
           <path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM6.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm7 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm2.16 3a6 6 0 0 1-11.32 0h11.32z"/>
         </svg> Laba</p>
-      <div class="flex">
+      <div class="flex flex-col sm:flex-row">
         <div id="bruto" class="m-2 flex-grow p-2 rounded-lg shadow-lg border">
           <p class="text-3xl sm:text-center text-left">Laba Bruto</p>
           <p class="text-2xl text-indigo-500">Rp <span id="laba-bruto">0</span>,00</p>
@@ -433,19 +458,6 @@
             <p>Tailwind CSS</p>
           </div>
         </a>
-        <!-- <div class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 text-center flex-grow w-32">
-          <img class="mx-auto h-16 w-16 p-2" src="158702-interface-icon-collection\png-\star.png" alt="">
-          <div class="text pt-1">
-            Font generated by <a href="http://www.flaticon.com" target="_blank"
-              class="hover:text-blue-500">flaticon.com</a>.
-            <p>Under
-              <a href="https://www.creativecommons.org/licenses/by/3.0/" target="_blank"
-                class="hover:text-blue-500">CC</a>:
-              <a data-file="previous-4" href="http://www.flaticon.com/authors/gregor-cresnar" target="_blank"
-                class="hover:text-blue-500">Gregor Cresnar</a>
-            </p>
-          </div>
-        </div> -->
         <a href="https://www.electronjs.org" target="_blank"
           class="flex-col h-48 hover:bg-gray-100 shadow-lg rounded-lg p-2 m-2 hover:text-purple-500 text-center flex-grow w-32">
           <img class="mx-auto h-16" src="assets\icons\javascript-electron-logo-s.jpg" alt="">
@@ -463,7 +475,42 @@
       </div>
     </div>
   </div>
-  <!-- <div id="tab-content" class="w-full h-screen flex-col sm:flex-row hidden">Options</div> -->
+  <div id="tab-content" class="w-full h-screen flex-col sm:flex-row hidden">
+    <div class="flex-grow p-2 max-h-full min-h-full h-full max-w-full overflow-hidden">
+      <ul class="md:border-r h-full w-full md:w-1/2 p-2">
+        <li class="rounded border mb-2 p-3 flex hover:bg-gray-100">
+            <div class="flex-grow">
+              <h1 class="font-semibold text-lg text-blue-700 btn">My Save Data</h1>
+              <h1 class="text-sm text-gray-700">12 Oct 2019</h1>
+            </div>
+            <div class="my-auto pt-1">
+              <button class="mx-1 text-gray-700 hover:text-blue-500 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-5">
+                  <path d="M0 2C0 .9.9 0 2 0h14l4 4v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5 0v6h10V2H5zm6 1h3v4h-3V3z"/>
+                </svg>
+              </button>
+              <button class="mx-1 text-gray-700 hover:text-blue-500 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-5">
+                  <path d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z"/>
+                </svg>
+              </button>
+            </div>
+        </li>
+        <li class="rounded border-2 border-dashed mb-2 flex hover:text-blue-600 text-gray-600 hover:border-blue-600 border-gray-600">
+          <button class="w-full btn p-3">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current h-5 mx-auto">
+                <path d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2v4zm-1 11a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+              </svg>
+            <h1 class="font-semibold text-xl btn">New Save File</h1>
+          </button>
+        </li>
+      </ul>
+      <div class="h-full hidden md:block w-1/2">
+        
+      </div>
+    </div>
+  </div>
+  <div id="tab-content" class="w-full h-screen flex-col sm:flex-row hidden">Load</div>
 
   <script src="js/pwa.js"></script>
   <script src="node_modules/chart.js/dist/Chart.bundle.js"></script>
