@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "electron": "^5.0.8",
     "electron-store": "^5.0.0",
     "jspdf": "^1.5.3",
